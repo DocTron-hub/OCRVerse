@@ -25,7 +25,7 @@
 </div> -->
 
 ## 📢 News and Updates
-* ```2025.10.28``` We upload our model weights [OCRVerse-text](https://huggingface.co/DocTron/OCRVerse-text) and [OCRVerse-code](https://huggingface.co/DocTron/OCRVerse-code) to HuggingFace.
+* ```2025.10.27``` We upload our model weights [OCRVerse-text](https://huggingface.co/DocTron/OCRVerse-text) to HuggingFace.
 <!-- * ```2025.07.21``` 🔥🔥🔥 We release the technical report of **Chart-R1** at arXiv [link](https://arxiv.org/abs/2507.15509). -->
 
 
@@ -33,20 +33,21 @@
 |  Model   | Download Link  |
 |  ----  | ----  |
 |  OCRVerse-text |  [DocTron/OCRVerse-text](https://huggingface.co/DocTron/OCRVerse-text)  |
-|  OCRVerse-code  |  [DocTron/OCRVerse-code](https://huggingface.co/DocTron/OCRVerse-code)   |
+<!-- |  OCRVerse-code  |  [DocTron/OCRVerse-code](https://huggingface.co/DocTron/OCRVerse-code)   | -->
 
 <!-- The ```Chart-COT``` is Qwen2.5-VL-7B-Instruct fine-tuned with supervised learning on the ChartRQA-SFT dataset. The ```Chart-R1``` is Chart-COT further optimized through reinforcement fine-tuning (RFT). -->
 
 
 ## 📊 Performance
 
-### OCRVerse-text
+### OmniDocBench v1.5
 
 <table>
   <thead>
     <tr>
       <th>Model Type</th>
       <th>Methods</th>
+      <th>End to End</th>
       <th>Parameters</th>
       <th>Overall↑</th>
       <th>Text<sup>Edit</sup>↓</th>
@@ -60,6 +61,7 @@
     <tr>
       <td rowspan="3">Pipeline Tools</td>
       <td>Marker-1.8.2</td>
+      <td>❌</td>
       <td>-</td>
       <td>71.30</td>
       <td>0.206</td>
@@ -70,6 +72,7 @@
     </tr>
     <tr>
       <td>Mineru2-pipeline</td>
+      <td>❌</td>
       <td>-</td>
       <td>75.51</td>
       <td>0.209</td>
@@ -80,6 +83,7 @@
     </tr>
     <tr>
       <td>PP-StructureV3</td>
+      <td>❌</td>
       <td>-</td>
       <td>86.73</td>
       <td>0.073</td>
@@ -91,6 +95,7 @@
     <tr>
       <td rowspan="5">General VLMs</td>
       <td>GPT-4o</td>
+      <td>✅</td>
       <td>-</td>
       <td>75.02</td>
       <td>0.217</td>
@@ -101,6 +106,7 @@
     </tr>
     <tr>
       <td>InternVL3-76B</td>
+      <td>✅</td>
       <td>76B</td>
       <td>80.33</td>
       <td>0.131</td>
@@ -111,6 +117,7 @@
     </tr>
     <tr>
       <td>InternVL3.5-241B</td>
+      <td>✅</td>
       <td>241B</td>
       <td>82.67</td>
       <td>0.142</td>
@@ -121,6 +128,7 @@
     </tr>
     <tr>
       <td>Qwen2.5-VL-72B</td>
+      <td>✅</td>
       <td>72B</td>
       <td>87.02</td>
       <td>0.094</td>
@@ -131,6 +139,7 @@
     </tr>
     <tr>
       <td>Gemini-2.5 Pro</td>
+      <td>✅</td>
       <td>-</td>
       <td>88.03</td>
       <td>0.075</td>
@@ -140,8 +149,9 @@
       <td>0.097</td>
     </tr>
     <tr>
-      <td rowspan="7">Layout-aware VLMs</td>
+      <td rowspan="14">Specialized VLMs</td>
       <td>Dolphin</td>
+      <td>❌</td>
       <td>322M</td>
       <td>74.67</td>
       <td>0.125</td>
@@ -151,68 +161,8 @@
       <td>0.124</td>
     </tr>
     <tr>
-      <td>MinerU2-VLM</td>
-      <td>0.9B</td>
-      <td>85.56</td>
-      <td>0.078</td>
-      <td>80.95</td>
-      <td>83.54</td>
-      <td>87.66</td>
-      <td>0.086</td>
-    </tr>
-    <tr>
-      <td>MonkeyOCR-pro-1.2B</td>
-      <td>1.9B</td>
-      <td>86.96</td>
-      <td>0.084</td>
-      <td>85.02</td>
-      <td>84.24</td>
-      <td>89.02</td>
-      <td>0.130</td>
-    </tr>
-    <tr>
-      <td>MonkeyOCR-3B</td>
-      <td>3.7B</td>
-      <td>87.13</td>
-      <td>0.075</td>
-      <td>87.45</td>
-      <td>81.39</td>
-      <td>85.92</td>
-      <td>0.129</td>
-    </tr>
-    <tr>
-      <td>MonkeyOCR-pro-3B</td>
-      <td>3.7B</td>
-      <td>88.85</td>
-      <td>0.075</td>
-      <td>87.25</td>
-      <td>86.78</td>
-      <td>90.63</td>
-      <td>0.128</td>
-    </tr>
-    <tr>
-      <td>MinerU2.5</td>
-      <td>1.2B</td>
-      <td>90.67</td>
-      <td>0.047</td>
-      <td>88.46</td>
-      <td>88.22</td>
-      <td>92.38</td>
-      <td>0.044</td>
-    </tr>
-    <tr>
-      <td>PaddleOCR-VL</td>
-      <td>0.9B</td>
-      <td>92.56</td>
-      <td>0.035</td>
-      <td>91.43</td>
-      <td>89.76</td>
-      <td>93.52</td>
-      <td>0.043</td>
-    </tr>
-    <tr>
-      <td rowspan="7">End-to-End VLMs</td>
       <td>OCRFlux-3B</td>
+      <td>✅</td>
       <td>3B</td>
       <td>74.82</td>
       <td>0.193</td>
@@ -223,6 +173,7 @@
     </tr>
     <tr>
       <td>Mistral OCR</td>
+      <td>✅</td>
       <td>-</td>
       <td>78.83</td>
       <td>0.164</td>
@@ -233,6 +184,7 @@
     </tr>
     <tr>
       <td>POINTS-Reader</td>
+      <td>✅</td>
       <td>3B</td>
       <td>80.98</td>
       <td>0.134</td>
@@ -243,6 +195,7 @@
     </tr>
     <tr>
       <td>olmOCR-7B</td>
+      <td>✅</td>
       <td>7B</td>
       <td>81.79</td>
       <td>0.096</td>
@@ -252,7 +205,19 @@
       <td>0.121</td>
     </tr>
     <tr>
+      <td>MinerU2-VLM</td>
+      <td>❌</td>
+      <td>0.9B</td>
+      <td>85.56</td>
+      <td>0.078</td>
+      <td>80.95</td>
+      <td>83.54</td>
+      <td>87.66</td>
+      <td>0.086</td>
+    </tr>
+    <tr>
       <td>Nanonets-OCR-s</td>
+      <td>✅</td>
       <td>3B</td>
       <td>85.59</td>
       <td>0.093</td>
@@ -262,7 +227,30 @@
       <td>0.108</td>
     </tr>
     <tr>
+      <td>MonkeyOCR-pro-1.2B</td>
+      <td>❌</td>
+      <td>1.9B</td>
+      <td>86.96</td>
+      <td>0.084</td>
+      <td>85.02</td>
+      <td>84.24</td>
+      <td>89.02</td>
+      <td>0.130</td>
+    </tr>
+    <tr>
+      <td>MonkeyOCR-3B</td>
+      <td>❌</td>
+      <td>3.7B</td>
+      <td>87.13</td>
+      <td>0.075</td>
+      <td>87.45</td>
+      <td>81.39</td>
+      <td>85.92</td>
+      <td>0.129</td>
+    </tr>
+    <tr>
       <td>dots.ocr</td>
+      <td>✅</td>
       <td>3B</td>
       <td>88.41</td>
       <td>0.048</td>
@@ -271,7 +259,42 @@
       <td>90.62</td>
       <td>0.053</td>
     </tr>
-      <td>OCRVerse-text</td>
+    <tr>
+      <td>MonkeyOCR-pro-3B</td>
+      <td>❌</td>
+      <td>3.7B</td>
+      <td>88.85</td>
+      <td>0.075</td>
+      <td>87.25</td>
+      <td>86.78</td>
+      <td>90.63</td>
+      <td>0.128</td>
+    </tr>
+    <tr>
+      <td>MinerU2.5</td>
+      <td>❌</td>
+      <td>1.2B</td>
+      <td>90.67</td>
+      <td>0.047</td>
+      <td>88.46</td>
+      <td>88.22</td>
+      <td>92.38</td>
+      <td>0.044</td>
+    </tr>
+    <tr>
+      <td>PaddleOCR-VL</td>
+      <td>❌</td>
+      <td>0.9B</td>
+      <td>92.56</td>
+      <td>0.035</td>
+      <td>91.43</td>
+      <td>89.76</td>
+      <td>93.52</td>
+      <td>0.043</td>
+    </tr>
+    </tr>
+      <td>OCRVerse</td>
+      <td>✅</td>
       <td>4B</td>
       <td>87.91</td>
       <td>0.052</td>
@@ -282,8 +305,6 @@
     </tr>
   </tbody>
 </table>
-
-### OCRVerse-code
 
 
 <!-- ## 🔍 Usage Example
