@@ -307,78 +307,73 @@
 </table>
 
 
-<!-- ## 🔍 Usage Example
-Below is a simple example of how to use Chart-R1 for multimodal reasoning tasks:
+## 🔍 Usage Example
+
+### OCRVerse-text
+
+This below is a simple example of how to use OCRVerse-text for document parsing tasks.
+
+Please first install [transformers](https://github.com/huggingface/transformers) using the following command:
+
+```shell
+pip install "transformers>=4.57.0"
+```
+
 ```python
-from transformers import Qwen2_5_VLForConditionalGeneration, AutoProcessor
-from qwen_vl_utils import process_vision_info
+from transformers import Qwen3VLForConditionalGeneration, AutoProcessor
+import torch
 
 # Load model
-model_path = 'DocTron/Chart-R1'
-
-# Load the model on the available device(s)
-model = Qwen2_5_VLForConditionalGeneration.from_pretrained(
-    model_path, torch_dtype="auto", device_map="auto", attn_implementation="flash_attention_2"
+model_path = 'DocTron/OCRVerse-text'
+model = Qwen3VLForConditionalGeneration.from_pretrained(
+    model_path, 
+    dtype=torch.bfloat16,
+    device_map="cuda",
+    attn_implementation="flash_attention_2",
+    trust_remote_code=True
 )
-
-# Use the following system_prompt and pixel range by default
-system_prompt = "Solve the question. The user asks a question, and you solves it. You first thinks about the reasoning process in the mind and then provides the user with the answer. The reasoning process and answer are enclosed within <think> </think> and <answer> </answer> tags, respectively, i.e., <think> Since 1+1=2, so the answer is 2. </think><answer> 2 </answer>, which means assistant's output should start with <think> and end with </answer>."
-
-processor = AutoProcessor.from_pretrained(model_path, min_pixels=1280*28*28, max_pixels=16384*28*28)
-
-# Set generation parameters by default
-generate_kwargs = dict(
-    max_new_tokens=2048,
-    top_p=0.001,
-    top_k=1,
-    temperature=0.01,
-    repetition_penalty=1.0
-)
+processor = AutoProcessor.from_pretrained(model_path, trust_remote_code=True)
 
 # Prepare input with image and text
+image_path = "./assets/ocrverse-text_test.jpg"
+# We recommend using the following prompt to better performance, since it is used throughout the training process.
+prompt = "Extract the main content from the document in the image, keeping the original structure. Convert all formulas to LaTeX and all tables to HTML."
+
 messages = [
-    {
-        "role": "system",
-        "content": system_prompt
-    },
     {
         "role": "user",
         "content": [
-            {
-                "type": "image",
-                "image": "assets/example_case.jpg",
-            },
-            {"type": "text", "text": "What is the difference in percentage of U.S. people who thinks scientists should take active part in policy debates and those thinks they should focus on establishing sound scientific facts?"},
-        ],
+            {"type": "image", "image": image_path},
+            {"type": "text", "text": prompt},
+        ]
     }
 ]
 
 # Preparation for inference
-text = processor.apply_chat_template(
-    messages, tokenize=False, add_generation_prompt=True
-)
-image_inputs, video_inputs = process_vision_info(messages)
-inputs = processor(
-    text=[text],
-    images=image_inputs,
-    videos=video_inputs,
-    padding=True,
-    return_tensors="pt",
+inputs = processor.apply_chat_template(
+    messages, 
+    tokenize=True, 
+    add_generation_prompt=True,
+    return_dict=True,
+    return_tensors="pt"
 )
 inputs = inputs.to(model.device)
 
 # Inference: Generation of the output
-generated_ids = model.generate(**inputs, **generate_kwargs)
-generated_ids_trimmed = [
-    out_ids[len(in_ids) :] for in_ids, out_ids in zip(inputs.input_ids, generated_ids)
+generated_ids = model.generate(**inputs, max_new_tokens=8192, do_sample=False)
+
+generated_ids = [
+    output_ids[len(input_ids):] for input_ids, output_ids in zip(inputs.input_ids, generated_ids)
 ]
-output_text = processor.batch_decode(
-    generated_ids_trimmed, skip_special_tokens=True, clean_up_tokenization_spaces=False
+output_text = processor.tokenizer.batch_decode(
+    generated_ids, skip_special_tokens=True, clean_up_tokenization_spaces=False
 )
 print(output_text[0])
 
-# <think>Step 1: Identify the percentage of U.S. people who think scientists should 'Take an active role in policy debates'. This is 60%. Step 2: Identify the percentage of U.S. people who think scientists should 'Focus on establishing sound scientific facts'. This is 39%. Step 3: Calculate the difference between these two percentages: 60% - 39% = 21%.</think><answer>21</answer>
-``` -->
+# $$
+# r = \frac{\alpha}{\beta} \sin \beta (\sigma_1 \pm \sigma_2)
+# $$
+```
 
 
 ## 📌 Acknowledgement
