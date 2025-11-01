@@ -55,6 +55,7 @@ $$
     <tr>
       <th>Model Type</th>
       <th>Methods</th>
+      <th>Release Date</th>
       <th>End to End</th>
       <th>Parameters</th>
       <th>Overall↑</th>
@@ -66,9 +67,11 @@ $$
     </tr>
   </thead>
   <tbody>
+    <!-- Pipeline Tools -->
     <tr>
       <td rowspan="3">Pipeline Tools</td>
       <td>Marker-1.8.2</td>
+      <td>2025</td>
       <td>❌</td>
       <td>-</td>
       <td>71.30</td>
@@ -80,6 +83,7 @@ $$
     </tr>
     <tr>
       <td>Mineru2-pipeline</td>
+      <td>2025</td>
       <td>❌</td>
       <td>-</td>
       <td>75.51</td>
@@ -91,6 +95,7 @@ $$
     </tr>
     <tr>
       <td>PP-StructureV3</td>
+      <td>2024</td>
       <td>❌</td>
       <td>-</td>
       <td>86.73</td>
@@ -100,9 +105,11 @@ $$
       <td>89.48</td>
       <td>0.073</td>
     </tr>
+    <!-- General VLMs -->
     <tr>
       <td rowspan="5">General VLMs</td>
       <td>GPT-4o</td>
+      <td>2024</td>
       <td>✅</td>
       <td>-</td>
       <td>75.02</td>
@@ -114,6 +121,7 @@ $$
     </tr>
     <tr>
       <td>InternVL3-76B</td>
+      <td>2025</td>
       <td>✅</td>
       <td>76B</td>
       <td>80.33</td>
@@ -125,6 +133,7 @@ $$
     </tr>
     <tr>
       <td>InternVL3.5-241B</td>
+      <td>2025</td>
       <td>✅</td>
       <td>241B</td>
       <td>82.67</td>
@@ -136,6 +145,7 @@ $$
     </tr>
     <tr>
       <td>Qwen2.5-VL-72B</td>
+      <td>2025</td>
       <td>✅</td>
       <td>72B</td>
       <td>87.02</td>
@@ -147,6 +157,7 @@ $$
     </tr>
     <tr>
       <td>Gemini-2.5 Pro</td>
+      <td>2025</td>
       <td>✅</td>
       <td>-</td>
       <td>88.03</td>
@@ -156,9 +167,11 @@ $$
       <td>90.29</td>
       <td>0.097</td>
     </tr>
+    <!-- Specialized VLMs: End to End ❌ -->
     <tr>
-      <td rowspan="14">Specialized VLMs</td>
+      <td rowspan="15">Specialized VLMs</td>
       <td>Dolphin</td>
+      <td>2025.05</td>
       <td>❌</td>
       <td>322M</td>
       <td>74.67</td>
@@ -169,51 +182,8 @@ $$
       <td>0.124</td>
     </tr>
     <tr>
-      <td>OCRFlux-3B</td>
-      <td>✅</td>
-      <td>3B</td>
-      <td>74.82</td>
-      <td>0.193</td>
-      <td>68.03</td>
-      <td>75.75</td>
-      <td>80.23</td>
-      <td>0.202</td>
-    </tr>
-    <tr>
-      <td>Mistral OCR</td>
-      <td>✅</td>
-      <td>-</td>
-      <td>78.83</td>
-      <td>0.164</td>
-      <td>82.84</td>
-      <td>70.03</td>
-      <td>78.04</td>
-      <td>0.144</td>
-    </tr>
-    <tr>
-      <td>POINTS-Reader</td>
-      <td>✅</td>
-      <td>3B</td>
-      <td>80.98</td>
-      <td>0.134</td>
-      <td>79.20</td>
-      <td>77.13</td>
-      <td>81.66</td>
-      <td>0.145</td>
-    </tr>
-    <tr>
-      <td>olmOCR-7B</td>
-      <td>✅</td>
-      <td>7B</td>
-      <td>81.79</td>
-      <td>0.096</td>
-      <td>86.04</td>
-      <td>68.92</td>
-      <td>74.77</td>
-      <td>0.121</td>
-    </tr>
-    <tr>
       <td>MinerU2-VLM</td>
+      <td>2025.06</td>
       <td>❌</td>
       <td>0.9B</td>
       <td>85.56</td>
@@ -224,18 +194,8 @@ $$
       <td>0.086</td>
     </tr>
     <tr>
-      <td>Nanonets-OCR-s</td>
-      <td>✅</td>
-      <td>3B</td>
-      <td>85.59</td>
-      <td>0.093</td>
-      <td>85.90</td>
-      <td>80.14</td>
-      <td>85.57</td>
-      <td>0.108</td>
-    </tr>
-    <tr>
       <td>MonkeyOCR-pro-1.2B</td>
+      <td>2025.07</td>
       <td>❌</td>
       <td>1.9B</td>
       <td>86.96</td>
@@ -247,6 +207,7 @@ $$
     </tr>
     <tr>
       <td>MonkeyOCR-3B</td>
+      <td>2025.06</td>
       <td>❌</td>
       <td>3.7B</td>
       <td>87.13</td>
@@ -257,18 +218,8 @@ $$
       <td>0.129</td>
     </tr>
     <tr>
-      <td>dots.ocr</td>
-      <td>✅</td>
-      <td>3B</td>
-      <td>88.41</td>
-      <td>0.048</td>
-      <td>83.22</td>
-      <td>86.78</td>
-      <td>90.62</td>
-      <td>0.053</td>
-    </tr>
-    <tr>
       <td>MonkeyOCR-pro-3B</td>
+      <td>2025.07</td>
       <td>❌</td>
       <td>3.7B</td>
       <td>88.85</td>
@@ -280,6 +231,7 @@ $$
     </tr>
     <tr>
       <td>MinerU2.5</td>
+      <td>2025.09</td>
       <td>❌</td>
       <td>1.2B</td>
       <td>90.67</td>
@@ -291,6 +243,7 @@ $$
     </tr>
     <tr>
       <td>PaddleOCR-VL</td>
+      <td>2025.10</td>
       <td>❌</td>
       <td>0.9B</td>
       <td>92.56</td>
@@ -300,16 +253,102 @@ $$
       <td>93.52</td>
       <td>0.043</td>
     </tr>
+    <!-- Specialized VLMs: End to End ✅ -->
+    <tr>
+      <td>OCRFlux-3B</td>
+      <td>2025.06</td>
+      <td>✅</td>
+      <td>3B</td>
+      <td>74.82</td>
+      <td>0.193</td>
+      <td>68.03</td>
+      <td>75.75</td>
+      <td>80.23</td>
+      <td>0.202</td>
     </tr>
+    <tr>
+      <td>Mistral OCR</td>
+      <td>2025.03</td>
+      <td>✅</td>
+      <td>-</td>
+      <td>78.83</td>
+      <td>0.164</td>
+      <td>82.84</td>
+      <td>70.03</td>
+      <td>78.04</td>
+      <td>0.144</td>
+    </tr>
+    <tr>
+      <td>POINTS-Reader</td>
+      <td>2025.08</td>
+      <td>✅</td>
+      <td>3B</td>
+      <td>80.98</td>
+      <td>0.134</td>
+      <td>79.20</td>
+      <td>77.13</td>
+      <td>81.66</td>
+      <td>0.145</td>
+    </tr>
+    <tr>
+      <td>olmOCR-7B</td>
+      <td>2025.02</td>
+      <td>✅</td>
+      <td>7B</td>
+      <td>81.79</td>
+      <td>0.096</td>
+      <td>86.04</td>
+      <td>68.92</td>
+      <td>74.77</td>
+      <td>0.121</td>
+    </tr>
+    <tr>
+      <td>Nanonets-OCR-s</td>
+      <td>2025.06</td>
+      <td>✅</td>
+      <td>3B</td>
+      <td>85.59</td>
+      <td>0.093</td>
+      <td>85.90</td>
+      <td>80.14</td>
+      <td>85.57</td>
+      <td>0.108</td>
+    </tr>
+    <tr>
+      <td>Deepseek-OCR</td>
+      <td>2025.10</td>
+      <td>✅</td>
+      <td>3B</td>
+      <td>87.01</td>
+      <td>0.073</td>
+      <td>83.37</td>
+      <td>84.97</td>
+      <td>88.80</td>
+      <td>0.086</td>
+    </tr>
+    <tr>
+      <td>dots.ocr</td>
+      <td>2025.07</td>
+      <td>✅</td>
+      <td>3B</td>
+      <td>88.41</td>
+      <td>0.048</td>
+      <td>83.22</td>
+      <td>86.78</td>
+      <td>90.62</td>
+      <td>0.053</td>
+    </tr>
+    <tr>
       <td>OCRVerse</td>
+      <td>2025.10</td>
       <td>✅</td>
       <td>4B</td>
-      <td>87.91</td>
-      <td>0.052</td>
-      <td>87.11</td>
-      <td>81.81</td>
-      <td>86.14</td>
-      <td>0.065</td>
+      <td>88.65</td>
+      <td>0.051</td>
+      <td>88.38</td>
+      <td>82.67</td>
+      <td>86.63</td>
+      <td>0.062</td>
     </tr>
   </tbody>
 </table>
@@ -372,10 +411,9 @@ import torch
 # Load model
 model_path = 'DocTron/OCRVerse-text'
 model = Qwen3VLForConditionalGeneration.from_pretrained(
-    model_path, 
-    dtype=torch.bfloat16,
+    model_path,
+    dtype="auto", 
     device_map="cuda",
-    attn_implementation="flash_attention_2",
     trust_remote_code=True
 )
 processor = AutoProcessor.from_pretrained(model_path, trust_remote_code=True)
