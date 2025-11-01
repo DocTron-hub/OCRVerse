@@ -24,12 +24,12 @@
 <img src="./assets/chart_r1_radar.png"  width="100%">
 </div> -->
 
-## 📢 News and Updates
+# 📢 News and Updates
 * ```2025.10.27``` We upload our model weights [OCRVerse-text](https://huggingface.co/DocTron/OCRVerse-text) to HuggingFace.
 <!-- * ```2025.07.21``` 🔥🔥🔥 We release the technical report of **Chart-R1** at arXiv [link](https://arxiv.org/abs/2507.15509). -->
 
 
-## 🤗 Models
+# 🤗 Models
 |  Model   | Download Link  |
 |  ----  | ----  |
 |  OCRVerse-text |  [DocTron/OCRVerse-text](https://huggingface.co/DocTron/OCRVerse-text)  |
@@ -38,9 +38,17 @@
 <!-- The ```Chart-COT``` is Qwen2.5-VL-7B-Instruct fine-tuned with supervised learning on the ChartRQA-SFT dataset. The ```Chart-R1``` is Chart-COT further optimized through reinforcement fine-tuning (RFT). -->
 
 
-## 📊 Performance
+# 📊 Performance
 
-### OmniDocBench v1.5
+## OmniDocBench v1.5
+
+### End-to-End Evaluation
+
+End-to-end evaluation assesses the model's accuracy in parsing PDF page content. The evaluation uses the model's Markdown output of the entire PDF page parsing results as the prediction. The Overall metric is calculated as:
+
+$$
+\text{Overall} = \frac{(1-\text{Text Edit Distance}) \times 100 + \text{Table TEDS} +\text{Formula CDM}}{3}
+$$
 
 <table>
   <thead>
@@ -345,11 +353,48 @@
   </tbody>
 </table>
 
+### PDF type
+
+The following table illustrates the text recognition performance (Edit Distance) of the OCRVerse model across 9 different document types. It is intended to offer deeper insights into the model’s performance on diverse page types, thereby enabling a more nuanced understanding of its capabilities and limitations in different real-world document scenarios.
+
+<table>
+  <thead>
+    <tr>
+      <th>model</th>
+      <th>Book</th>
+      <th>PPT2PDF</th>
+      <th>Research Report</th>
+      <th>Colorful Textbook</th>
+      <th>Exam Paper</th>
+      <th>Magazine</th>
+      <th>Academic Literature</th>
+      <th>Note</th>
+      <th>Newspaper</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>OCRVerse</td>
+      <td>0.041</td>
+      <td>0.026</td>
+      <td>0.006</td>
+      <td>0.092</td>
+      <td>0.051</td>
+      <td>0.03</td>
+      <td>0.043</td>
+      <td>0.069</td>
+      <td>0.098</td>
+    </tr>
+  </tbody>
+</table>
+
+# 🔍 Usage Example
+
+## OCRVerse-text
 
 
-## 🔍 Usage Example
 
-### OCRVerse-text
+### Inference
 
 This below is a simple example of how to use OCRVerse-text for document parsing tasks.
 
@@ -414,8 +459,54 @@ print(output_text[0])
 # $$
 ```
 
+### Fine-tuning
 
-## 📌 Acknowledgement
+If you want to continue training based on our model, you can use [Llama Factory](https://github.com/hiyouga/LLaMA-Factory). For installation and usage of Llama Factory, please refer to its official documentation. A reference fine-tuning script with pre-specified parameters is provided below:
+
+```shell
+PROJECT_DIR=/path/to/llama_factory
+cd ${PROJECT_DIR}
+
+# Set parameters
+GPUS_PER_NODE=8                  # Number of GPUs per node
+NNODES=1                         # Total number of nodes
+NODE_RANK=0                      # Rank of the current node (starts from 0)
+MASTER_ADDR=localhost            # IP address of the master node
+MASTER_PORT=12345                # Port for communication between nodes
+
+MODEL_DIR=/path/to/ocrverse_text_model  # Path to the pre-trained OCRVerse model
+DATA=/name/of/your/dataset               # Name/path of your custom dataset
+OUTPUT_DIR=/path/to/output              # Directory to save fine-tuned results
+
+# Llama Factory-based fine-tuning script
+torchrun --nproc_per_node="${GPUS_PER_NODE}" --nnodes="${NNODES}" --node_rank="${NODE_RANK}" --master_addr="${MASTER_ADDR}" --master_port="${MASTER_PORT}" \
+    src/train.py \
+    --model_name_or_path "$MODEL_DIR" \
+    --stage sft \
+    --do_train True \
+    --finetuning_type full \
+    --dataset "$DATA" \
+    --template qwen3_vl_nothink \
+    --cutoff_len 8192 \
+    --preprocessing_num_workers 128 \
+    --preprocessing_batch_size 256 \
+    --dataloader_num_workers 128 \
+    --output_dir "$OUTPUT_DIR" \
+    --logging_steps 1 \
+    --save_steps 5000 \
+    --plot_loss True \
+    --save_only_model False \
+    --report_to none \
+    --per_device_train_batch_size 1 \
+    --gradient_accumulation_steps 1 \
+    --learning_rate 1e-5 \
+    --num_train_epochs 1 \
+    --lr_scheduler_type cosine \
+    --warmup_ratio 0.1 \
+    --bf16 True
+```
+
+# 📌 Acknowledgement
 We sincerely appreciate [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory) for providing reference training framework.
 
 
