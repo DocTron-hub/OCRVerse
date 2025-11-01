@@ -353,37 +353,102 @@ $$
   </tbody>
 </table>
 
-### PDF type
+### Performance Across Diverse Page Types
 
 The following table illustrates the text recognition performance (Edit Distance) of the OCRVerse model across 9 different document types. It is intended to offer deeper insights into the model’s performance on diverse page types, thereby enabling a more nuanced understanding of its capabilities and limitations in different real-world document scenarios.
 
-<table>
+<table style="border-collapse: collapse;">
   <thead>
+    <tr style="border: 1px solid black;">
+      <th style="border: 1px solid black;">model</th>
+      <th style="border: 1px solid black;">Book</th>
+      <th style="border: 1px solid black;">PPT2PDF</th>
+      <th style="border: 1px solid black;">Research Report</th>
+      <th style="border: 1px solid black;">Colorful Textbook</th>
+      <th style="border: 1px solid black;">Exam Paper</th>
+      <th style="border: 1px solid black;">Magazine</th>
+      <th style="border: 1px solid black;">Academic Literature</th>
+      <th style="border: 1px solid black;">Note</th>
+      <th style="border: 1px solid black;">Newspaper</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="border: 1px solid black;">
+      <td style="border: 1px solid black;">OCRVerse</td>
+      <td style="border: 1px solid black;">0.041</td>
+      <td style="border: 1px solid black;">0.026</td>
+      <td style="border: 1px solid black;">0.006</td>
+      <td style="border: 1px solid black;">0.092</td>
+      <td style="border: 1px solid black;">0.051</td>
+      <td style="border: 1px solid black;">0.03</td>
+      <td style="border: 1px solid black;">0.043</td>
+      <td style="border: 1px solid black;">0.069</td>
+      <td style="border: 1px solid black;">0.098</td>
+    </tr>
+  </tbody>
+</table>
+
+### Performance Across Diverse Layouts
+
+End-to-end reading order evaluation on OmniDocBench: results across different column layout types using Normalized Edit Distance.
+
+<table style="border-collapse: collapse;">
+  <thead>
+    <tr style="border: 1px solid black;">
+      <th style="border: 1px solid black;">model</th>
+      <th style="border: 1px solid black;">Single Column</th>
+      <th style="border: 1px solid black;">Double Column</th>
+      <th style="border: 1px solid black;">Three Column</th>
+      <th style="border: 1px solid black;">Other Layout</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="border: 1px solid black;">
+      <td style="border: 1px solid black;">OCRVerse</td>
+      <td style="border: 1px solid black;">0.022</td>
+      <td style="border: 1px solid black;">0.042</td>
+      <td style="border: 1px solid black;">0.09</td>
+      <td style="border: 1px solid black;">0.16</td>
+    </tr>
+  </tbody>
+</table>
+
+### Text Recognition Performance Across Attributes
+
+The following table illustrates the text recognition performance (Edit Distance) of the OCRVerse model across diverse text attributes, including language, background, and rotation. It is intended to offer deeper insights into the model’s performance under different text properties, thereby enabling a more nuanced understanding of its capabilities and limitations in real-world document scenarios.
+
+<table style="border-collapse: collapse;">
+  <thead>
+    <tr style="border-bottom: none;">
+      <th rowspan="2" style="border: 1px solid black;">Model</th>
+      <th colspan="3" style="border: 1px solid black;">Language</th>
+      <th colspan="3" style="border: 1px solid black;">Text background</th>
+      <th colspan="3" style="border: 1px solid black;">Text Rotate</th>
+    </tr>
     <tr>
-      <th>model</th>
-      <th>Book</th>
-      <th>PPT2PDF</th>
-      <th>Research Report</th>
-      <th>Colorful Textbook</th>
-      <th>Exam Paper</th>
-      <th>Magazine</th>
-      <th>Academic Literature</th>
-      <th>Note</th>
-      <th>Newspaper</th>
+      <th style="border: 1px solid black;">EN</th>
+      <th style="border: 1px solid black;">ZH</th>
+      <th style="border: 1px solid black;">Mixed</th>
+      <th style="border: 1px solid black;">White</th>
+      <th style="border: 1px solid black;">Single</th>
+      <th style="border: 1px solid black;">Multi</th>
+      <th style="border: 1px solid black;">Normal</th>
+      <th style="border: 1px solid black;">Rotate270</th>
+      <th style="border: 1px solid black;">Horizontal</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>OCRVerse</td>
-      <td>0.041</td>
-      <td>0.026</td>
-      <td>0.006</td>
-      <td>0.092</td>
-      <td>0.051</td>
-      <td>0.03</td>
-      <td>0.043</td>
-      <td>0.069</td>
-      <td>0.098</td>
+      <td style="border: 1px solid black;">OCRVerse</td>
+      <td style="border: 1px solid black;">0.077</td>
+      <td style="border: 1px solid black;">0.084</td>
+      <td style="border: 1px solid black;">0.062</td>
+      <td style="border: 1px solid black;">0.081</td>
+      <td style="border: 1px solid black;">0.068</td>
+      <td style="border: 1px solid black;">0.08</td>
+      <td style="border: 1px solid black;">0.078</td>
+      <td style="border: 1px solid black;">0.968</td>
+      <td style="border: 1px solid black;">0.232</td>
     </tr>
   </tbody>
 </table>
