@@ -37,6 +37,15 @@
 
 <!-- The ```Chart-COT``` is Qwen2.5-VL-7B-Instruct fine-tuned with supervised learning on the ChartRQA-SFT dataset. The ```Chart-R1``` is Chart-COT further optimized through reinforcement fine-tuning (RFT). -->
 
+# 📥 Data Processing
+
+To build a multi-scenario, multi-type document OCR dataset, we combine open-source and self-built data to balance scale and quality:
+- Open-source data is low-cost and large-scale but suffers from uneven quality due to scattered sources and lack of unified annotation standards. We use VLM for quality optimization to improve usability.
+- To cover gaps in real-world scenarios, self-built data serves as a key supplement:
+  - Collect real PDF documents (matching practical layouts, fonts, colors, and resolutions) with VLM-powered precise annotation.
+  - Crawl public high-quality online documents and convert them to images via browser rendering to enrich data types and expand scenario coverage.
+
+![数据处理流程图](assets/数据处理流程.png)
 
 # 📊 Performance
 
