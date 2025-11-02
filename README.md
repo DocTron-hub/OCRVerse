@@ -462,6 +462,223 @@ The following table illustrates the text recognition performance (Edit Distance)
   </tbody>
 </table>
 
+
+
+## Multimodal Code Generation
+
+<table>
+  <thead>
+    <tr>
+      <th rowspan="2">Model</th>
+      <th rowspan="2">Parameter</th>
+      <th colspan="3" class="header-group">ChartMimic_direct_v2</th>
+      <th colspan="3" class="header-group">UniSVG-ISVGEN</th>
+      <th colspan="2" class="header-group">Design2Code</th>
+      <th colspan="2" class="header-group">Image2Latex_plot</th>
+      <th colspan="2" class="header-group">ChemDraw</th>
+    </tr>
+    <tr>
+      <th class="subheader">Exec.Rate</th>
+      <th class="subheader">Low-Level</th>
+      <th class="subheader">High-Level</th>
+      <th class="subheader">Low-Level</th>
+      <th class="subheader">High-Level</th>
+      <th class="subheader">Score</th>
+      <th class="subheader">Low-Level</th>
+      <th class="subheader">High-Level</th>
+      <th class="subheader">Ren.Succ.</th>
+      <th class="subheader">EMS</th>
+      <th class="subheader">Exec.Rate</th>
+      <th class="subheader">Tani.Sim.</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="13" class="model-category">Closed-Source Models</td>
+    </tr>
+    <tr class="gray-row">
+      <td>Gemini-2.5-Pro</td>
+      <td>-</td>
+      <td>97.3</td>
+      <td>88.7</td>
+      <td>83.8</td>
+      <td>53.6</td>
+      <td>80.3</td>
+      <td>69.6</td>
+      <td>90.8</td>
+      <td>91.4</td>
+      <td>74.3</td>
+      <td>52.5</td>
+      <td>77.3</td>
+      <td>2.8</td>
+    </tr>
+    <tr class="gray-row">
+      <td>Claude-4.5-Sonnet</td>
+      <td>-</td>
+      <td>97.8</td>
+      <td>89.6</td>
+      <td>82.9</td>
+      <td>61.0</td>
+      <td>83.4</td>
+      <td>74.6</td>
+      <td>90.4</td>
+      <td>90.8</td>
+      <td>72.7</td>
+      <td>50.2</td>
+      <td>95.3</td>
+      <td>41.7</td>
+    </tr>
+    <tr class="gray-row">
+      <td>GPT-5</td>
+      <td>-</td>
+      <td>94.8</td>
+      <td>81.9</td>
+      <td>78.3</td>
+      <td>60.8</td>
+      <td>88.3</td>
+      <td>77.3</td>
+      <td>90.6</td>
+      <td>91.0</td>
+      <td>78.7</td>
+      <td>57.4</td>
+      <td>93.8</td>
+      <td>52.1</td>
+    </tr>
+    <tr>
+      <td colspan="13" class="model-category">Open-Source Models</td>
+    </tr>
+    <tr>
+      <td>Qwen2.5-VL-7B</td>
+      <td>7B</td>
+      <td>68.7</td>
+      <td>42.2</td>
+      <td>40.1</td>
+      <td>47.5</td>
+      <td>73.8</td>
+      <td>63.3</td>
+      <td>83.4</td>
+      <td>87.6</td>
+      <td>42.7</td>
+      <td>25.5</td>
+      <td>21.1</td>
+      <td>11.7</td>
+    </tr>
+    <tr>
+      <td>Qwen3-VL-8B</td>
+      <td>8B</td>
+      <td>78.3</td>
+      <td>62.5</td>
+      <td>67.8</td>
+      <td>53.0</td>
+      <td>77.0</td>
+      <td>67.4</td>
+      <td>85.5</td>
+      <td>87.2</td>
+      <td>47.7</td>
+      <td>33.0</td>
+      <td>78.9</td>
+      <td>41.2</td>
+    </tr>
+    <tr>
+      <td>InternVL3.5-8B</td>
+      <td>8B</td>
+      <td>66.7</td>
+      <td>46.0</td>
+      <td>48.3</td>
+      <td>55.0</td>
+      <td>78.0</td>
+      <td>68.6</td>
+      <td>85.8</td>
+      <td>87.3</td>
+      <td>58.3</td>
+      <td>40.5</td>
+      <td>49.2</td>
+      <td>7.8</td>
+    </tr>
+    <tr>
+      <td>InternVL3.5-14B</td>
+      <td>14B</td>
+      <td>73.2</td>
+      <td>52.8</td>
+      <td>55.4</td>
+      <td>52.0</td>
+      <td>75.0</td>
+      <td>65.9</td>
+      <td>86.1</td>
+      <td>87.8</td>
+      <td>73.0</td>
+      <td>50.2</td>
+      <td>71.9</td>
+      <td>39.3</td>
+    </tr>
+    <tr>
+      <td>Qwen3-VL-32B</td>
+      <td>32B</td>
+      <td>83.0</td>
+      <td>66.9</td>
+      <td>77.5</td>
+      <td>68.0</td>
+      <td>86.0</td>
+      <td>78.8</td>
+      <td>88.6</td>
+      <td>89.8</td>
+      <td>75.7</td>
+      <td>53.3</td>
+      <td>37.5</td>
+      <td>48.8</td>
+    </tr>
+    <tr>
+      <td>InternVL3.5-38B</td>
+      <td>38B</td>
+      <td>79.0</td>
+      <td>60.0</td>
+      <td>71.8</td>
+      <td>51.9</td>
+      <td>77.3</td>
+      <td>67.1</td>
+      <td>87.8</td>
+      <td>88.4</td>
+      <td>72.6</td>
+      <td>49.5</td>
+      <td>55.5</td>
+      <td>31.4</td>
+    </tr>
+    <tr>
+      <td>Qwen2.5-VL-72B</td>
+      <td>72B</td>
+      <td>88.5</td>
+      <td>72.7</td>
+      <td>79.1</td>
+      <td>47.7</td>
+      <td>76.0</td>
+      <td>64.7</td>
+      <td>86.9</td>
+      <td>88.7</td>
+      <td>62.0</td>
+      <td>41.7</td>
+      <td>75.8</td>
+      <td>28.0</td>
+    </tr>
+      <tr>
+      <td>OCRVerse</td>
+      <td>4B</td>
+      <td>82.0</td>
+      <td>65.7</td>
+      <td>74.3</td>
+      <td>82.1</td>
+      <td>93.4</td>
+      <td>88.8</td>
+      <td>83.6</td>
+      <td>86.1</td>
+      <td>71.0</td>
+      <td>50.4</td>
+      <td>85.2</td>
+      <td>60.4</td>
+    </tr>
+  </tbody>
+</table>
+
+
 # 🔍 Usage Example
 
 ## OCRVerse-text
