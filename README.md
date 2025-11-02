@@ -37,6 +37,14 @@
 
 <!-- The ```Chart-COT``` is Qwen2.5-VL-7B-Instruct fine-tuned with supervised learning on the ChartRQA-SFT dataset. The ```Chart-R1``` is Chart-COT further optimized through reinforcement fine-tuning (RFT). -->
 
+# 📚 Dataset Sources
+
+OCRVerse encompasses both text-level and code-level data sources, comprehensively supporting the data requirements of holistic OCR. 
+- The text-level data sources span nine scenario types: natural scenes, books, magazines, papers, reports, slides, exam papers, notes, and newspapers. These categories cover high-frequency daily text carriers, fulfill fundamental OCR needs, and avoid both scenario redundancy and gaps. 
+- The code-level data sources comprise six scenario types: charts, webpages, icons, geometry, circuits, and molecules. These focus on professional structured scenarios and address gaps not covered by text-level categories.
+
+![数据分类](assets/data_source.png)
+
 # 📥 Data Processing
 
 To build a multi-scenario, multi-type document OCR dataset, we combine open-source and self-built data to balance scale and quality:
