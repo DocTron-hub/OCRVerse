@@ -31,6 +31,7 @@ Besides, our method demonstrates comprehensive advancement on a wider range of c
 </div>
 
 # 📢 News and Updates
+* ```2025.11.3``` We upload our model weights [OCRVerse-code](https://huggingface.co/DocTron/OCRVerse-code) to HuggingFace.
 * ```2025.10.27``` We upload our model weights [OCRVerse-text](https://huggingface.co/DocTron/OCRVerse-text) to HuggingFace.
 <!-- * ```2025.07.21``` 🔥🔥🔥 We release the technical report of **Chart-R1** at arXiv [link](https://arxiv.org/abs/2507.15509). -->
 
@@ -39,7 +40,7 @@ Besides, our method demonstrates comprehensive advancement on a wider range of c
 |  Model   | Download Link  |
 |  ----  | ----  |
 |  OCRVerse-text |  [DocTron/OCRVerse-text](https://huggingface.co/DocTron/OCRVerse-text)  |
-<!-- |  OCRVerse-code  |  [DocTron/OCRVerse-code](https://huggingface.co/DocTron/OCRVerse-code)   | -->
+|  OCRVerse-code |  [DocTron/OCRVerse-code](https://huggingface.co/DocTron/OCRVerse-code)  |
 
 <!-- The ```Chart-COT``` is Qwen2.5-VL-7B-Instruct fine-tuned with supervised learning on the ChartRQA-SFT dataset. The ```Chart-R1``` is Chart-COT further optimized through reinforcement fine-tuning (RFT). -->
 
