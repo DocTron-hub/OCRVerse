@@ -62,7 +62,7 @@ Our training dataset is constructed through a systematic multi-stage pipeline th
   - we collect real PDF documents matching practical layouts, fonts, colors, and resolutions with VLM-powered precise annotation.
   - we crawl public high-quality online documents, converting them to images via browser rendering to enrich data types and expand scenario coverage.
 
-**Code-level data construction.** We begin by curating a diverse corpus from open-source datasets, employing rigorous filtering and diversity-aware sampling. Subsequently, we enhance the data via two parallel streams: refining existing samples through execution, validation, and optimization, while generating novel ones for the refinement task. 
+**Code-level data construction.** We begin by curating a diverse corpus from open-source datasets through rigorous filtering and diversity-aware sampling. Subsequently, we employ specialized VLMs for high-quality re-annotation to ensure label accuracy and consistency. Finally, we enhance the data through execution validation and rendering processes to generate executable code-image pairs.
 
 ![数据处理流程图](assets/data_pipeline-20251103.png)
 
