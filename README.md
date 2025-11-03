@@ -19,10 +19,16 @@
 
 ---
 
-<!-- **Chart-R1** is a vision-language model that enables complex chart reasoning through reinforcement learning fine-tuning. As the **first** to apply R1-Style methods to the chart domain, it employs programmatic data synthesis to generate high-quality step-by-step reasoning data for charts. Chart-R1's two-stage training includes Chart-COT (chain-of-thought supervision) and Chart-RFT (numerically sensitive reinforcement fine-tuning). Experiments show Chart-R1 achieves significant advantages on open-source benchmarks and the ChartRQA dataset, comparable to large-scale models like GPT-4o and Claude-3.5, proving R1-Style effectiveness for chart reasoning.
+We introduce OCRVerse, which advances traditional document OCR to the next-generation holistic OCR via comprehensive data and methodological practices.
+OCRVerse not only recognizes traditional optical character, but also **parses complex visual symbols through code-level representations**, enabling broad applications across domains including statistics, office, math, chemical, physical etc.
+To this end, we constructed **a large-scale interdisciplinary dataset** spanning heterogeneous data sources, with innovative practices in **data rendering and model synthesis**. 
+Based on this, we develop an **end-to-end lightweight vision-language model** (built on Qwen3-VL 4B) with two specialized variants: **OCRVerse-text** dedicated to character-level output and **OCRVerse-code** specialized in code-level output.
+We conduct extensive experiments to validate the effectiveness of our approach and reveal the potential of holistic OCR.
+Experimental results show that our method achieves an overall score of 87.9 on OmniDocbench, which is competitive with the state-of-the-art end-to-end VLM model. 
+Besides, our method demonstrates comprehensive advancement on a wider range of charts, web pages, SVGs, molecular formulas, and circuit diagrams, taking a key step towards holistic OCR applications.
 <div align="center">
-<img src="./assets/chart_r1_radar.png"  width="100%">
-</div> -->
+<!-- <img src="./assets/chart_r1_radar.png"  width="100%"> -->
+</div>
 
 # 📢 News and Updates
 * ```2025.10.27``` We upload our model weights [OCRVerse-text](https://huggingface.co/DocTron/OCRVerse-text) to HuggingFace.
@@ -39,9 +45,9 @@
 
 # 📚 Dataset Sources
 
-OCRVerse encompasses both text-level and code-level data sources, comprehensively supporting the data requirements of holistic OCR. 
-- The text-level data sources span nine scenario types: natural scenes, books, magazines, papers, reports, slides, exam papers, notes, and newspapers. These categories cover high-frequency daily text carriers, fulfill fundamental OCR needs, and avoid both scenario redundancy and gaps. 
-- The code-level data sources comprise six scenario types: charts, webpages, icons, geometry, circuits, and molecules. These focus on professional structured scenarios and address gaps not covered by text-level categories.
+OCRVerse encompasses both **text-level** and **code-level** data sources, comprehensively supporting the data requirements of holistic OCR. 
+- The **text-level** data sources span nine scenario types: natural scenes, books, magazines, papers, reports, slides, exam papers, notes, and newspapers. These categories cover high-frequency daily text carriers, fulfill fundamental OCR needs, and avoid both scenario redundancy and gaps. 
+- The **code-level** data sources comprise six scenario types: charts, webpages, icons, geometry, circuits, and molecules. These focus on professional structured scenarios and address gaps not covered by text-level categories.
 
 ![数据分类](assets/data_source.png)
 
@@ -57,7 +63,9 @@ To build a multi-scenario, multi-type document OCR dataset, we combine open-sour
 
 # 📊 Performance
 
-## OmniDocBench v1.5
+## OCRVerse-text
+
+OCRVerse-text is evaluated on OmniDocBench v1.5, a comprehensive document OCR benchmark covering diverse real-world scenarios (e.g., office documents, academic papers, scanned materials). Results show OCRVerse-text delivers competitive performance, demonstrating strong adaptability to practical document OCR demands.
 
 ### End-to-End Evaluation
 
@@ -472,7 +480,9 @@ The following table illustrates the text recognition performance (Edit Distance)
 
 
 
-## Multimodal Code Generation
+## OCRVerse-code
+
+OCRVerse-code is evaluated across key technical document and code generation benchmarks, including ChartMimic direct v2, UniSVG-ISVGEN, Design2Code, Image2Latex plot, and ChemDraw. The evaluation focuses on its ability to recognize, parse, and convert specialized content—such as charts, SVG graphics, design layouts, LaTeX plots, and chemical structures—into accurate, executable code or structured formats. Results demonstrate OCRVerse-code’s strong versatility and reliability in handling technical and visual-to-code conversion tasks across diverse professional scenarios.
 
 <table>
   <thead>
