@@ -768,6 +768,71 @@ print(output_text[0])
 # $$
 ```
 
+
+Below is a simple example of how to use OCRVerse-code for chart-to-code generation tasks. We also recommend utilizing [SGLang](https://github.com/sgl-project/sglang) for inference.
+```python
+from transformers import Qwen3VLForConditionalGeneration, AutoProcessor
+import torch
+
+# Load model
+model_path = 'DocTron/OCRVerse-code'
+model = Qwen3VLForConditionalGeneration.from_pretrained(
+    model_path,
+    dtype="auto", 
+    device_map="cuda",
+    trust_remote_code=True
+)
+processor = AutoProcessor.from_pretrained(model_path, trust_remote_code=True)
+
+# Prepare input with image and text
+image_path = "./assets/chart2code_example.png"
+# We recommend using the following prompt to better performance, since it is used throughout the training process.
+prompt = "<image>\nYou are an expert Python developer who specializes in writing matplotlib code based on a given picture. I found a very nice picture in a STEM paper, but there is no corresponding source code available. I need your help to generate the Python code that can reproduce the picture based on the picture I provide.\nNote that it is necessary to use figsize=(7.0, 5.0) to set the image size to match the original size.\nNow, please give me the matplotlib code that reproduces the picture below."
+
+messages = [
+    {
+        "role": "user",
+        "content": [
+            {"type": "image", "image": image_path},
+            {"type": "text", "text": prompt},
+        ]
+    }
+]
+
+# Preparation for inference
+inputs = processor.apply_chat_template(
+    messages, 
+    tokenize=True, 
+    add_generation_prompt=True,
+    return_dict=True,
+    return_tensors="pt"
+)
+inputs = inputs.to(model.device)
+
+# Inference: Generation of the output
+generated_ids = model.generate(**inputs, max_new_tokens=4096, do_sample=False)
+
+generated_ids = [
+    output_ids[len(input_ids):] for input_ids, output_ids in zip(inputs.input_ids, generated_ids)
+]
+output_text = processor.tokenizer.batch_decode(
+    generated_ids, skip_special_tokens=True, clean_up_tokenization_spaces=False
+)
+print(output_text[0])
+```
+
+Example scripts for launching SGLang Server
+```shell
+CUDA_VISIBLE_DEVICES=0,1,2,3 \
+python -m sglang.launch_server \
+--model-path DocTron/OCRVerse-code \
+--host 0.0.0.0 \
+--dist-init-addr 127.0.0.1:10002 \
+--tp 4 \
+--port 6002
+```
+
+
 ### Fine-tuning
 
 If you want to continue training based on our model, you can use [Llama Factory](https://github.com/hiyouga/LLaMA-Factory). For installation and usage of Llama Factory, please refer to its official documentation. A reference fine-tuning script with pre-specified parameters is provided below:
