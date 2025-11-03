@@ -786,7 +786,6 @@ processor = AutoProcessor.from_pretrained(model_path, trust_remote_code=True)
 
 # Prepare input with image and text
 image_path = "./assets/chart2code_example.png"
-# We recommend using the following prompt to better performance, since it is used throughout the training process.
 prompt = "<image>\nYou are an expert Python developer who specializes in writing matplotlib code based on a given picture. I found a very nice picture in a STEM paper, but there is no corresponding source code available. I need your help to generate the Python code that can reproduce the picture based on the picture I provide.\nNote that it is necessary to use figsize=(7.0, 5.0) to set the image size to match the original size.\nNow, please give me the matplotlib code that reproduces the picture below."
 
 messages = [
