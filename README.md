@@ -54,13 +54,17 @@ OCRVerse encompasses both **text-level** and **code-level** data sources, compre
 
 # 📥 Data Processing
 
-To build a multi-scenario, multi-type document OCR dataset, we combine open-source and self-built data to balance scale and quality:
-- Open-source data is low-cost and large-scale but suffers from uneven quality due to scattered sources and lack of unified annotation standards. We use VLM for quality optimization to improve usability.
-- To cover gaps in real-world scenarios, self-built data serves as a key supplement:
-  - Collect real PDF documents (matching practical layouts, fonts, colors, and resolutions) with VLM-powered precise annotation.
-  - Crawl public high-quality online documents and convert them to images via browser rendering to enrich data types and expand scenario coverage.
+Our training dataset is constructed through a systematic multi-stage pipeline that integrates both **text-level** and **code-level** data sources to ensure comprehensive coverage and high quality.
 
-![数据处理流程图](assets/数据处理流程.png)
+**Text-level data construction.** To build a multi-scenario, multi-type document OCR dataset, we combine open-source and self-built data to balance scale and quality. 
+- Open-source data provides low-cost, large-scale coverage but suffers from uneven quality due to scattered sources and lack of unified annotation standards; we employ VLM for quality optimization to improve usability. 
+- To address gaps in real-world scenarios, self-built data serves as a key supplement: 
+  - we collect real PDF documents matching practical layouts, fonts, colors, and resolutions with VLM-powered precise annotation.
+  - we crawl public high-quality online documents, converting them to images via browser rendering to enrich data types and expand scenario coverage.
+
+**Code-level data construction.** We begin by curating a diverse corpus from open-source datasets, employing rigorous filtering and diversity-aware sampling. Subsequently, we enhance the data via two parallel streams: refining existing samples through execution, validation, and optimization, while generating novel ones for the refinement task. 
+
+![数据处理流程图](assets/data_pipeline-20251103.png)
 
 # 📊 Performance
 
@@ -513,7 +517,7 @@ OCRVerse-code is evaluated across key technical document and code generation ben
   </thead>
   <tbody>
     <tr>
-      <td colspan="13" class="model-category">Closed-Source Models</td>
+      <td colspan="14" class="model-category">Closed-Source Models</td>
     </tr>
     <tr class="gray-row">
       <td>Gemini-2.5-Pro</td>
@@ -564,7 +568,7 @@ OCRVerse-code is evaluated across key technical document and code generation ben
       <td>52.1</td>
     </tr>
     <tr>
-      <td colspan="13" class="model-category">Open-Source Models</td>
+      <td colspan="14" class="model-category">Open-Source Models</td>
     </tr>
     <tr>
       <td>Qwen2.5-VL-7B</td>
@@ -678,7 +682,7 @@ OCRVerse-code is evaluated across key technical document and code generation ben
       <td>75.8</td>
       <td>28.0</td>
     </tr>
-      <tr>
+    <tr>
       <td>OCRVerse</td>
       <td>4B</td>
       <td>82.0</td>
@@ -700,11 +704,9 @@ OCRVerse-code is evaluated across key technical document and code generation ben
 
 # 🔍 Usage Example
 
-## OCRVerse-text
+## Inference
 
-
-
-### Inference
+### OCRVerse-text
 
 This below is a simple example of how to use OCRVerse-text for document parsing tasks.
 
@@ -769,6 +771,7 @@ print(output_text[0])
 # $$
 ```
 
+### OCRVerse-code
 
 Below is a simple example of how to use OCRVerse-code for chart-to-code generation tasks. We also recommend utilizing [SGLang](https://github.com/sgl-project/sglang) for inference.
 ```python
@@ -833,7 +836,7 @@ python -m sglang.launch_server \
 ```
 
 
-### Fine-tuning
+## Fine-tuning
 
 If you want to continue training based on our model, you can use [Llama Factory](https://github.com/hiyouga/LLaMA-Factory). For installation and usage of Llama Factory, please refer to its official documentation. A reference fine-tuning script with pre-specified parameters is provided below:
 
