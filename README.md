@@ -56,17 +56,15 @@ OCRVerse encompasses both **text-level** and **code-level** data sources, compre
 
 Our training dataset is constructed through a systematic multi-stage pipeline that integrates both **text-level** and **code-level** data sources to ensure comprehensive coverage and high quality.
 
-## Text-level data construction
-To build a multi-scenario, multi-type document OCR dataset, we combine open-source and self-built data to balance scale and quality. 
+**Text-level data construction.** To build a multi-scenario, multi-type document OCR dataset, we combine open-source and self-built data to balance scale and quality. 
 - Open-source data provides low-cost, large-scale coverage but suffers from uneven quality due to scattered sources and lack of unified annotation standards; we employ VLM for quality optimization to improve usability. 
 - To address gaps in real-world scenarios, self-built data serves as a key supplement: 
   - we collect real PDF documents matching practical layouts, fonts, colors, and resolutions with VLM-powered precise annotation.
   - we crawl public high-quality online documents, converting them to images via browser rendering to enrich data types and expand scenario coverage.
 
-## Code-level data construction
-We begin by curating a diverse corpus from open-source datasets, employing rigorous filtering and diversity-aware sampling. Subsequently, we enhance the data via two parallel streams: refining existing samples through execution, validation, and optimization, while generating novel ones for the refinement task. 
+**Code-level data construction.** We begin by curating a diverse corpus from open-source datasets, employing rigorous filtering and diversity-aware sampling. Subsequently, we enhance the data via two parallel streams: refining existing samples through execution, validation, and optimization, while generating novel ones for the refinement task. 
 
-![数据处理流程图](assets/数据处理流程.png)
+![数据处理流程图](assets/data_pipeline-20251103.png)
 
 # 📊 Performance
 
