@@ -387,36 +387,290 @@ $$
 
 The following table illustrates the text recognition performance (Edit Distance) of the OCRVerse model across 9 different document types. It is intended to offer deeper insights into the model’s performance on diverse page types, thereby enabling a more nuanced understanding of its capabilities and limitations in different real-world document scenarios.
 
-<table style="border-collapse: collapse;">
-  <thead>
-    <tr style="border: 1px solid black;">
-      <th style="border: 1px solid black;">model</th>
-      <th style="border: 1px solid black;">Book</th>
-      <th style="border: 1px solid black;">PPT2PDF</th>
-      <th style="border: 1px solid black;">Research Report</th>
-      <th style="border: 1px solid black;">Colorful Textbook</th>
-      <th style="border: 1px solid black;">Exam Paper</th>
-      <th style="border: 1px solid black;">Magazine</th>
-      <th style="border: 1px solid black;">Academic Literature</th>
-      <th style="border: 1px solid black;">Note</th>
-      <th style="border: 1px solid black;">Newspaper</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr style="border: 1px solid black;">
-      <td style="border: 1px solid black;">OCRVerse</td>
-      <td style="border: 1px solid black;">0.041</td>
-      <td style="border: 1px solid black;">0.026</td>
-      <td style="border: 1px solid black;">0.006</td>
-      <td style="border: 1px solid black;">0.092</td>
-      <td style="border: 1px solid black;">0.051</td>
-      <td style="border: 1px solid black;">0.03</td>
-      <td style="border: 1px solid black;">0.043</td>
-      <td style="border: 1px solid black;">0.069</td>
-      <td style="border: 1px solid black;">0.098</td>
-    </tr>
-  </tbody>
+<table>
+    <thead>
+        <tr>
+            <th>Model Type</th>
+            <th>Models</th>
+            <th>End to End</th>
+            <th>Slides</th>
+            <th>Academic Papers</th>
+            <th>Book</th>
+            <th>Textbook</th>
+            <th>Exam Papers</th>
+            <th>Magazine</th>
+            <th>Newspaper</th>
+            <th>Notes</th>
+            <th>Financial Report</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan="3">Pipeline Tools</td>
+            <td>Marker-1.8.2</td>
+            <td>❌</td>
+            <td>0.1796</td>
+            <td>0.0412</td>
+            <td>0.1010</td>
+            <td>0.2908</td>
+            <td>0.2958</td>
+            <td>0.1111</td>
+            <td>0.2717</td>
+            <td>0.4656</td>
+            <td>0.0341</td>
+        </tr>
+        <tr>
+            <td>MinerU2-pipeline</td>
+            <td>❌</td>
+            <td>0.4244</td>
+            <td>0.0230</td>
+            <td>0.2628</td>
+            <td>0.1224</td>
+            <td>0.0822</td>
+            <td>0.395</td>
+            <td>0.0736</td>
+            <td>0.2603</td>
+            <td>0.0411</td>
+        </tr>
+        <tr>
+            <td>PP-StructureV3</td>
+            <td>❌</td>
+            <td>0.0794</td>
+            <td>0.0236</td>
+            <td>0.0415</td>
+            <td>0.1107</td>
+            <td>0.0945</td>
+            <td>0.0722</td>
+            <td>0.0617</td>
+            <td>0.1236</td>
+            <td>0.0181</td>
+        </tr>
+        <tr>
+            <td rowspan="5">General VLMs</td>
+            <td>GPT-4o</td>
+            <td>✅</td>
+            <td>0.1019</td>
+            <td>0.1203</td>
+            <td>0.1288</td>
+            <td>0.1599</td>
+            <td>0.1939</td>
+            <td>0.142</td>
+            <td>0.6254</td>
+            <td>0.2611</td>
+            <td>0.3343</td>
+        </tr>
+        <tr>
+            <td>InternVL3-76B</td>
+            <td>✅</td>
+            <td>0.0349</td>
+            <td>0.1052</td>
+            <td>0.0629</td>
+            <td>0.0827</td>
+            <td>0.1007</td>
+            <td>0.0406</td>
+            <td>0.5826</td>
+            <td>0.0924</td>
+            <td>0.0665</td>
+        </tr>
+        <tr>
+            <td>InternVL3.5-241B</td>
+            <td>✅</td>
+            <td>0.0475</td>
+            <td>0.0857</td>
+            <td>0.0237</td>
+            <td>0.1061</td>
+            <td>0.0933</td>
+            <td>0.0577</td>
+            <td>0.6403</td>
+            <td>0.1357</td>
+            <td>0.1117</td>
+        </tr>
+        <tr>
+            <td>Qwen2.5-VL-72B</td>
+            <td>✅</td>
+            <td>0.0422</td>
+            <td>0.0801</td>
+            <td>0.0586</td>
+            <td>0.1146</td>
+            <td>0.0681</td>
+            <td>0.0964</td>
+            <td>0.238</td>
+            <td>0.1232</td>
+            <td>0.0264</td>
+        </tr>
+        <tr>
+            <td>Gemini-2.5 Pro</td>
+            <td>✅</td>
+            <td>0.0326</td>
+            <td>0.0182</td>
+            <td>0.0694</td>
+            <td>0.1618</td>
+            <td>0.0937</td>
+            <td>0.0161</td>
+            <td>0.1347</td>
+            <td>0.1169</td>
+            <td>0.0169</td>
+        </tr>
+        <tr>
+            <td rowspan="12" style="vertical-align: middle;">Specialized VLMs</td>
+            <td>Dolphin</td>
+            <td>❌</td>
+            <td>0.0957</td>
+            <td>0.0453</td>
+            <td>0.0616</td>
+            <td>0.1333</td>
+            <td>0.1684</td>
+            <td>0.0702</td>
+            <td>0.2388</td>
+            <td>0.2561</td>
+            <td>0.0186</td>
+        </tr>
+        <tr>
+            <td>MinerU2-VLM</td>
+            <td>❌</td>
+            <td>0.0745</td>
+            <td>0.0104</td>
+            <td>0.0357</td>
+            <td>0.1276</td>
+            <td>0.0698</td>
+            <td>0.0652</td>
+            <td>0.1831</td>
+            <td>0.0803</td>
+            <td>0.0236</td>
+        </tr>
+        <tr>
+            <td>MonkeyOCR-pro-1.2B</td>
+            <td>❌</td>
+            <td>0.0961</td>
+            <td>0.0354</td>
+            <td>0.053</td>
+            <td>0.111</td>
+            <td>0.0887</td>
+            <td>0.0494</td>
+            <td>0.0995</td>
+            <td>0.1686</td>
+            <td>0.0198</td>
+        </tr>
+        <tr>
+            <td>MonkeyOCR-pro-3B</td>
+            <td>❌</td>
+            <td>0.0904</td>
+            <td>0.0362</td>
+            <td>0.0489</td>
+            <td>0.1072</td>
+            <td>0.0745</td>
+            <td>0.0475</td>
+            <td>0.0962</td>
+            <td>0.1165</td>
+            <td>0.0196</td>
+        </tr>
+        <tr>
+            <td>MinerU2.5</td>
+            <td>❌</td>
+            <td>0.0294</td>
+            <td>0.0235</td>
+            <td>0.0332</td>
+            <td>0.0499</td>
+            <td>0.0681</td>
+            <td>0.0316</td>
+            <td>0.054</td>
+            <td>0.1161</td>
+            <td>0.0104</td>
+        </tr>
+        <tr>
+            <td>OCRFlux</td>
+            <td>✅</td>
+            <td>0.0870</td>
+            <td>0.0867</td>
+            <td>0.0818</td>
+            <td>0.1843</td>
+            <td>0.2072</td>
+            <td>0.1048</td>
+            <td>0.7304</td>
+            <td>0.1567</td>
+            <td>0.0193</td>
+        </tr>
+        <tr>
+            <td>Mistral-OCR</td>
+            <td>✅</td>
+            <td>0.0917</td>
+            <td>0.0531</td>
+            <td>0.0610</td>
+            <td>0.1341</td>
+            <td>0.1341</td>
+            <td>0.0581</td>
+            <td>0.5643</td>
+            <td>0.3097</td>
+            <td>0.0523</td>
+        </tr>
+        <tr>
+            <td>POINTS-Reader</td>
+            <td>✅</td>
+            <td>0.0334</td>
+            <td>0.0779</td>
+            <td>0.0671</td>
+            <td>0.1372</td>
+            <td>0.1901</td>
+            <td>0.1343</td>
+            <td>0.3789</td>
+            <td>0.0937</td>
+            <td>0.0951</td>
+        </tr>
+        <tr>
+            <td>olmOCR-7B</td>
+            <td>✅</td>
+            <td>0.0497</td>
+            <td>0.0365</td>
+            <td>0.0539</td>
+            <td>0.1204</td>
+            <td>0.0728</td>
+            <td>0.0697</td>
+            <td>0.2916</td>
+            <td>0.122</td>
+            <td>0.0459</td>
+        </tr>
+        <tr>
+            <td>Nanonets-OCR-s</td>
+            <td>✅</td>
+            <td>0.0551</td>
+            <td>0.0578</td>
+            <td>0.0606</td>
+            <td>0.0931</td>
+            <td>0.0834</td>
+            <td>0.0917</td>
+            <td>0.1965</td>
+            <td>0.1606</td>
+            <td>0.0395</td>
+        </tr>
+        <tr>
+            <td>dots.ocr</td>
+            <td>✅</td>
+            <td>0.0290</td>
+            <td>0.0231</td>
+            <td>0.0433</td>
+            <td>0.0788</td>
+            <td>0.0467</td>
+            <td>0.0221</td>
+            <td>0.0667</td>
+            <td>0.1116</td>
+            <td>0.0076</td>
+        </tr>
+        <tr>
+            <td>OCRVerse</td>
+            <td>✅</td>
+            <td>0.0260</td>
+            <td>0.0427</td>
+            <td>0.0412</td>
+            <td>0.0921</td>
+            <td>0.0507</td>
+            <td>0.0303</td>
+            <td>0.0982</td>
+            <td>0.0695</td>
+            <td>0.0064</td>
+        </tr>
+    </tbody>
 </table>
+
 
 ### Performance Across Diverse Layouts
 
