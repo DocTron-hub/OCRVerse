@@ -10,7 +10,7 @@
 
 <div align="center">
 
-Yufeng Zhong*, Lei Chen*, Xuanle Zhao*, Wenkang Han, Liming Zheng, Jing Huang, Deyang Jiang, Yilin Cao, Lin Ma $^{\dagger}$, Zhixiong Zeng $^{\dagger}$
+Yufeng Zhong*, Lei Chen*, Xuanle Zhao*, Wenkang Han, Liming Zheng, Jing Huang,<br>Deyang Jiang, Yilin Cao, Lin Ma $^{\dagger}$, Zhixiong Zeng $^{\dagger}$
 
 <strong>Meituan</strong>
 
