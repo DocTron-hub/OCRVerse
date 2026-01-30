@@ -3,82 +3,77 @@
 </div>
 
 <div align="center">
-<!-- <a href=''><img src='https://img.shields.io/badge/Arxiv-2507.15509-b31b1b.svg?logo=arXiv'></a>&ensp;
-<a href=''><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face%20-models-blue'></a>&ensp; -->
+<a href='https://arxiv.org/abs/2601.21639'><img src='https://img.shields.io/badge/Arxiv-2601.21639-b31b1b.svg?logo=arXiv'></a>&ensp;
+<a href='https://huggingface.co/DocTron/OCRVerse'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face%20-models-blue'></a>&ensp;
 <a href=https://github.com/tatsu-lab/stanford_alpaca/blob/main/LICENSE><img src='https://img.shields.io/badge/License-Apache_2.0-green.svg'></a>
-
-<!-- Lei Chen, Xuanle Zhao, Zhixiong Zeng†, Jing Huang, Yufeng Zhong, Lin Ma* -->
 </div>
 
-<!-- <div align="center">
-<strong>Meituan Group</strong>
-</div>
 <div align="center">
-† Project Leader; * Corresponding Author
-</div> -->
+
+Yufeng Zhong*, Lei Chen*, Xuanle Zhao*, Wenkang Han, Liming Zheng, Jing Huang,<br>Deyang Jiang, Yilin Cao, Lin Ma $^{\dagger}$, Zhixiong Zeng $^{\dagger}$
+
+<strong>Meituan</strong>
+
+*Equal Contribution, $^{\dagger}$ Corresponding Authors
+</div>
 
 ---
 
-We introduce OCRVerse, which advances traditional document OCR to the next-generation holistic OCR via comprehensive data and methodological practices.
-OCRVerse not only recognizes traditional optical character, but also **parses complex visual symbols through code-level representations**, enabling broad applications across domains including statistics, office, math, chemical, physical etc.
-To this end, we constructed **a large-scale interdisciplinary dataset** spanning heterogeneous data sources, with innovative practices in **data rendering and model synthesis**. 
-Based on this, we develop an **end-to-end lightweight vision-language model** (built on Qwen3-VL 4B) with two specialized variants: **OCRVerse-text** dedicated to character-level output and **OCRVerse-code** specialized in code-level output.
-We conduct extensive experiments to validate the effectiveness of our approach and reveal the potential of holistic OCR.
-Experimental results show that our method achieves an overall score of 87.9 on OmniDocbench, which is competitive with the state-of-the-art end-to-end VLM model. 
-Besides, our method demonstrates comprehensive advancement on a wider range of charts, web pages, SVGs, molecular formulas, and circuit diagrams, taking a key step towards holistic OCR applications.
+The development of large vision language models drives the demand for managing, and applying massive amounts of multimodal data, making OCR technology, which extracts information from visual images, increasingly popular. However, existing OCR methods primarily focus on recognizing text elements from images or scanned documents (**Text-centric OCR**), neglecting the identification of visual elements from visually information-dense image sources (**Vision-centric OCR**), such as charts, web pages and science plots. In reality, these visually information-dense images are widespread on the internet and have significant real-world application value, such as data visualization and web page analysis.
+In this technical report, we propose **OCRVerse**, the first holistic OCR method in end-to-end manner that enables unified text-centric OCR and vision-centric OCR.
+To this end, we constructe comprehensive data engineering to cover a wide range of text-centric documents, such as newspapers, magazines and books, as well as vision-centric rendered composites, including charts, web pages and scientific plots.
+Moreover, we propose a two-stage SFT-RL multi-domain training method for OCRVerse. SFT directly mixes cross-domain data to train and establish initial domain knowledge, while RL focuses on designing personalized reward strategies for the characteristics of each domain. Specifically, since different domains require various output formats and expected outputs, we provide sufficient flexibility in the RL stage to customize flexible reward signals for each domain, thereby improving cross-domain fusion and avoiding data conflicts.
+Experimental results demonstrate the effectiveness of OCRVerse, achieving competitive results across text-centric and vision-centric data types, even comparable to large-scale open-source and closed-source models.
+
 <div align="center">
 <!-- <img src="./assets/chart_r1_radar.png"  width="100%"> -->
 </div>
 
 # 📢 News and Updates
-* ```2025.11.3``` We upload our model weights [OCRVerse-code](https://huggingface.co/DocTron/OCRVerse-code) to HuggingFace.
-* ```2025.10.27``` We upload our model weights [OCRVerse-text](https://huggingface.co/DocTron/OCRVerse-text) to HuggingFace.
-<!-- * ```2025.07.21``` 🔥🔥🔥 We release the technical report of **Chart-R1** at arXiv [link](https://arxiv.org/abs/2507.15509). -->
+* **[Jan 30, 2026]** 📄 Preprint released on [arXiv](https://arxiv.org/abs/2601.21639).
+* **[Jan 30, 2026]** 🤗 We upload our model weights [OCRVerse](https://huggingface.co/DocTron/OCRVerse) to HuggingFace.
+* **[Nov 3, 2025]** 🤗 We upload our model weights [OCRVerse-code](https://huggingface.co/DocTron/OCRVerse-code) to HuggingFace.
+* **[Oct 27, 2025]** 🤗 We upload our model weights [OCRVerse-text](https://huggingface.co/DocTron/OCRVerse-text) to HuggingFace.
 
-
-# 🤗 Models
+<!-- # 🤗 Models
 |  Model   | Download Link  |
 |  ----  | ----  |
 |  OCRVerse-text |  [DocTron/OCRVerse-text](https://huggingface.co/DocTron/OCRVerse-text)  |
-|  OCRVerse-code |  [DocTron/OCRVerse-code](https://huggingface.co/DocTron/OCRVerse-code)  |
+|  OCRVerse-code |  [DocTron/OCRVerse-code](https://huggingface.co/DocTron/OCRVerse-code)  | -->
 
-<!-- The ```Chart-COT``` is Qwen2.5-VL-7B-Instruct fine-tuned with supervised learning on the ChartRQA-SFT dataset. The ```Chart-R1``` is Chart-COT further optimized through reinforcement fine-tuning (RFT). -->
+# 💡 Benchmarking
+
+![性能比较](assets/ocrverse_performance.jpg)
+Performance comparison of OCRVerse on text-centric OCR tasks (top row) and vision-centric OCR tasks (bottom row). Since existing OCR methods primarily focus on text-centric scenarios, we compare against both specialized OCR models and general-purpose models for text-centric benchmarks, while comparing only against general-purpose models for vision-centric benchmarks.
 
 # 📚 Dataset Sources
 
-OCRVerse encompasses both **text-level** and **code-level** data sources, comprehensively supporting the data requirements of holistic OCR. 
-- The **text-level** data sources span nine scenario types: natural scenes, books, magazines, papers, reports, slides, exam papers, notes, and newspapers. These categories cover high-frequency daily text carriers, fulfill fundamental OCR needs, and avoid both scenario redundancy and gaps. 
-- The **code-level** data sources comprise six scenario types: charts, webpages, icons, geometry, circuits, and molecules. These focus on professional structured scenarios and address gaps not covered by text-level categories.
-
-![数据分类](assets/data_source.png)
+![数据分类](assets/ocrverse_data_source.jpg)
+OCRVerse encompasses both text-centric and vision-centric data types, comprehensively supporting the data requirements of holistic OCR. The text-centric data types cover nine document scenarios: natural scenes, books, magazines, papers, reports, slides, exam papers, notes, and newspapers, which encompass high-frequency text scenarios in daily life and meet essential OCR needs. The vision-centric data types comprise six specialized scenarios: charts, webpages, icons, geometry, circuits, and molecules, which focus on professional structured content and address gaps not covered by text-centric categories.
 
 # 📥 Data Processing
+![数据处理流程图](assets/ocrverse_data_pipeline.jpg)
+Our training dataset is constructed through a systematic multi-stage pipeline that integrates both text-centric and vision-centric data sources to ensure comprehensive coverage and high quality. The data processing workflow encompasses data collection, cleaning, and annotation generation (including self-annotation).
 
-Our training dataset is constructed through a systematic multi-stage pipeline that integrates both **text-level** and **code-level** data sources to ensure comprehensive coverage and high quality.
-
-**Text-level data construction.** To build a multi-scenario, multi-type document OCR dataset, we combine open-source and self-built data to balance scale and quality. 
-- Open-source data provides low-cost, large-scale coverage but suffers from uneven quality due to scattered sources and lack of unified annotation standards; we employ VLM for quality optimization to improve usability. 
-- To address gaps in real-world scenarios, self-built data serves as a key supplement: 
-  - we collect real PDF documents matching practical layouts, fonts, colors, and resolutions with VLM-powered precise annotation.
-  - we crawl public high-quality online documents, converting them to images via browser rendering to enrich data types and expand scenario coverage.
-
-**Code-level data construction.** We begin by curating a diverse corpus from open-source datasets through rigorous filtering and diversity-aware sampling. Subsequently, we employ specialized VLMs for high-quality re-annotation to ensure label accuracy and consistency. Finally, we enhance the data through execution validation and rendering processes to generate executable code-image pairs.
-
-![数据处理流程图](assets/data_pipeline-20251103.png)
+# 🤖 Pipeline
+![架构](assets/ocrverse_model_pipeline.jpg)
+We propose a two-stage SFT-RL multi-domain training method. In the SFT stage, we aim to establish foundational cross-domain knowledge by directly mixing data from all domains. This approach enables the model to learn diverse visual patterns and output formats across both text-centric and vision-centric scenarios, thereby building a unified representation space. In the RL stage, we aim to resolve domain-specific conflicts and optimize personalized performance for each domain. Since different domains require various output formats and quality expectations, we design customized reward strategies tailored to the characteristics of each domain, such as structural accuracy for tables and semantic fidelity for charts. This flexible reward mechanism effectively improves cross-domain fusion while avoiding data conflicts that typically arise from naive multi-task learning.
 
 # 📊 Performance
 
-## OCRVerse-text
+## Text-Centric Evaluation
+### Benchmark 
+We adopt OmniDocBench v1.5 as the primary testbed to comprehensively evaluate the document parsing capabilities of OCRVerse. This benchmark serves as a rigorous standard to validate model robustness and generalization across real-world applications. OmniDocBench v1.5 is an expanded dataset comprising 1,355 document pages, enriched with 374 additional pages compared to the previous version. It features a balanced distribution of bilingual content in both Chinese and English and covers nine diverse document types—including academic papers, textbooks, financial reports, and exam papers. By incorporating varied layout structures (from single- to multi-column) and rich elements such as text, mathematical formulas, and structured tables, the benchmark enables a thorough assessment of OCRVerse in handling complex parsing scenarios.
 
-OCRVerse-text is evaluated on OmniDocBench v1.5, a comprehensive document OCR benchmark covering diverse real-world scenarios (e.g., office documents, academic papers, scanned materials). Results show OCRVerse-text delivers competitive performance, demonstrating strong adaptability to practical document OCR demands.
-
-### End-to-End Evaluation
+### Metrics
 
 End-to-end evaluation assesses the model's accuracy in parsing PDF page content. The evaluation uses the model's Markdown output of the entire PDF page parsing results as the prediction. The Overall metric is calculated as:
 
 $$
 \text{Overall} = \frac{(1-\text{Text Edit Distance}) \times 100 + \text{Table TEDS} +\text{Formula CDM}}{3}
 $$
+
+### Results
 
 <table>
   <thead>
@@ -199,7 +194,7 @@ $$
     </tr>
     <!-- Specialized VLMs: End to End ❌ -->
     <tr>
-      <td rowspan="15">Specialized VLMs</td>
+      <td rowspan="18">Specialized VLMs</td>
       <td>Dolphin</td>
       <td>2025.05</td>
       <td>❌</td>
@@ -369,21 +364,57 @@ $$
       <td>0.053</td>
     </tr>
     <tr>
-      <td>OCRVerse</td>
-      <td>2025.10</td>
+      <td>FD-RL</td>
+      <td>2025.11</td>
       <td>✅</td>
       <td>4B</td>
-      <td>88.65</td>
-      <td>0.051</td>
-      <td>88.38</td>
-      <td>82.67</td>
-      <td>86.63</td>
-      <td>0.062</td>
+      <td>90.41</td>
+      <td>0.049</td>
+      <td>88.67</td>
+      <td>87.35</td>
+      <td>92.10</td>
+      <td>0.055</td>
+    </tr>
+    <tr>
+      <td>HunyuanOCR</td>
+      <td>2025.11</td>
+      <td>✅</td>
+      <td>4B</td>
+      <td>94.10</td>
+      <td>0.042</td>
+      <td>94.73</td>
+      <td>91.81</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Deepseek-OCR 2</td>
+      <td>2026.01</td>
+      <td>✅</td>
+      <td>1B</td>
+      <td>91.09</td>
+      <td>0.048</td>
+      <td>90.31</td>
+      <td>87.75</td>
+      <td>92.06</td>
+      <td>0.057</td>
+    </tr>
+    <tr>
+      <td>OCRVerse(Ours)</td>
+      <td>2026.01</td>
+      <td>✅</td>
+      <td>4B</td>
+      <td>89.23</td>
+      <td>0.052</td>
+      <td>87.13</td>
+      <td>85.77</td>
+      <td>90.35</td>
+      <td>0.068</td>
     </tr>
   </tbody>
 </table>
 
-### Performance Across Diverse Page Types
+<!-- ### Performance Across Diverse Page Types
 
 The following table illustrates the text recognition performance (Edit Distance) of the OCRVerse model across 9 different document types. It is intended to offer deeper insights into the model’s performance on diverse page types, thereby enabling a more nuanced understanding of its capabilities and limitations in different real-world document scenarios.
 
@@ -669,10 +700,10 @@ The following table illustrates the text recognition performance (Edit Distance)
             <td>0.0064</td>
         </tr>
     </tbody>
-</table>
+</table> -->
 
 
-### Performance Across Diverse Layouts
+<!-- ### Performance Across Diverse Layouts
 
 End-to-end reading order evaluation on OmniDocBench: results across different column layout types using Normalized Edit Distance.
 
@@ -736,14 +767,20 @@ The following table illustrates the text recognition performance (Edit Distance)
     </tr>
   </tbody>
 </table>
+ -->
 
 
+## Vison-Centric Evaluation
 
-## OCRVerse-code
+### Benchmarks
+To comprehensively evaluate the vision-centric OCR capabilities of our proposed OCRVerse, we conducted extensive experiments across five diverse structured vision-centric benchmarks. These benchmarks cover a wide spectrum of visual domains, assessing the model's ability to translate visually dense information into executable code or structured representations. Specifically, the evaluation tasks include: (1) ChartMimic for direct chart-to-code generation; (2) Design2Code, which evaluates the precision of reproducing web layouts in the web-to-HTML task; (3) UniSVG, assessing the generation of scalable vector graphics in the image-to-SVG task; (4) Image2Struct, testing the conversion of scientific documents and formulas in the image-to-LaTeX task; (5) ChemDraw, focusing on the recognition of chemical structures in the molecule-to-code task.
 
-OCRVerse-code is evaluated across key technical document and code generation benchmarks, including ChartMimic direct v2, UniSVG-ISVGEN, Design2Code, Image2Latex plot, and ChemDraw. The evaluation focuses on its ability to recognize, parse, and convert specialized content—such as charts, SVG graphics, design layouts, LaTeX plots, and chemical structures—into accurate, executable code or structured formats. Results demonstrate OCRVerse-code’s strong versatility and reliability in handling technical and visual-to-code conversion tasks across diverse professional scenarios.
+### Metrics
+For all benchmarks, we strictly adhere to the evaluation protocols officially defined in their respective GitHub repositories or original papers. For ChartMimic, we report the code execution success rate and the average of low-level metrics (Text, Layout, Type, and Color Scores). For high-level evaluation, we employ the GPT-4o Score. Regarding UniSVG, we present the low-level score, computed as the average of SSIM and (1 - LPIPS), alongside the high-level CLIP similarity. For Design2Code, we report both the CLIP similarity (high-level) and the element-matching scores (low-level) proposed by the benchmark authors. For Image2Struct, we evaluate using the earth mover's similarity (EMS) and the rendering success rate. Finally, for ChemDraw, we report the code execution success rate and the Tanimoto similarity.
 
-<table>
+### Results
+
+<!-- <table>
   <thead>
     <tr>
       <th rowspan="2">Model</th>
@@ -953,16 +990,259 @@ OCRVerse-code is evaluated across key technical document and code generation ben
       <td>60.4</td>
     </tr>
   </tbody>
-</table>
+</table> -->
 
+<table>
+  <thead>
+    <tr>
+      <th rowspan="2">Model</th>
+      <th rowspan="2">Parameter</th>
+      <th colspan="3" class="header-group">ChartMimic_direct_v2</th>
+      <th colspan="3" class="header-group">UniSVG-ISVGEN</th>
+      <th colspan="2" class="header-group">Design2Code</th>
+      <th colspan="2" class="header-group">Image2Latex_plot</th>
+      <th colspan="2" class="header-group">ChemDraw</th>
+    </tr>
+    <tr>
+      <th class="subheader">Exec.Rate</th>
+      <th class="subheader">Low-Level</th>
+      <th class="subheader">High-Level</th>
+      <th class="subheader">Low-Level</th>
+      <th class="subheader">High-Level</th>
+      <th class="subheader">Score</th>
+      <th class="subheader">Low-Level</th>
+      <th class="subheader">High-Level</th>
+      <th class="subheader">Ren.Succ.</th>
+      <th class="subheader">EMS</th>
+      <th class="subheader">Exec.Rate</th>
+      <th class="subheader">Tani.Sim.</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="14" class="model-category">Closed-Source Models</td>
+    </tr>
+    <tr class="gray-row">
+      <td>Gemini-2.5-Pro</td>
+      <td>-</td>
+      <td>97.3</td>
+      <td>88.7</td>
+      <td>83.8</td>
+      <td>53.6</td>
+      <td>80.3</td>
+      <td>69.6</td>
+      <td>90.8</td>
+      <td>91.4</td>
+      <td>74.3</td>
+      <td>52.5</td>
+      <td>77.3</td>
+      <td>2.8</td>
+    </tr>
+    <tr class="gray-row">
+      <td>Claude-4.5-Sonnet</td>
+      <td>-</td>
+      <td>97.8</td>
+      <td>89.6</td>
+      <td>82.9</td>
+      <td>61.0</td>
+      <td>83.4</td>
+      <td>74.6</td>
+      <td>90.4</td>
+      <td>90.8</td>
+      <td>72.7</td>
+      <td>50.2</td>
+      <td>95.3</td>
+      <td>41.7</td>
+    </tr>
+    <tr class="gray-row">
+      <td>GPT-5</td>
+      <td>-</td>
+      <td>94.8</td>
+      <td>81.9</td>
+      <td>78.3</td>
+      <td>60.8</td>
+      <td>88.3</td>
+      <td>77.3</td>
+      <td>90.6</td>
+      <td>91.0</td>
+      <td>78.7</td>
+      <td>57.4</td>
+      <td>93.8</td>
+      <td>52.1</td>
+    </tr>
+    <tr>
+      <td colspan="14" class="model-category">Open-Source Models</td>
+    </tr>
+    <tr>
+      <td>Qwen2.5-VL-7B</td>
+      <td>7B</td>
+      <td>68.7</td>
+      <td>42.2</td>
+      <td>40.1</td>
+      <td>47.5</td>
+      <td>73.8</td>
+      <td>63.3</td>
+      <td>83.4</td>
+      <td>87.6</td>
+      <td>42.7</td>
+      <td>25.5</td>
+      <td>21.1</td>
+      <td>11.7</td>
+    </tr>
+    <tr>
+      <td>InternVL3-8B</td>
+      <td>8B</td>
+      <td>63.3</td>
+      <td>43.8</td>
+      <td>46.1</td>
+      <td>54.5</td>
+      <td>77.4</td>
+      <td>68.2</td>
+      <td>85.3</td>
+      <td>87.6</td>
+      <td>57.7</td>
+      <td>38.6</td>
+      <td>42.2</td>
+      <td>6.2</td>
+    </tr>
+    <tr>
+      <td>Qwen3-VL-8B</td>
+      <td>8B</td>
+      <td>78.3</td>
+      <td>62.5</td>
+      <td>67.8</td>
+      <td>53.0</td>
+      <td>77.0</td>
+      <td>67.4</td>
+      <td>85.5</td>
+      <td>87.2</td>
+      <td>47.7</td>
+      <td>33.0</td>
+      <td>78.9</td>
+      <td>41.2</td>
+    </tr>
+    <tr>
+      <td>InternVL3.5-8B</td>
+      <td>8B</td>
+      <td>66.7</td>
+      <td>46.0</td>
+      <td>48.3</td>
+      <td>55.0</td>
+      <td>78.0</td>
+      <td>68.6</td>
+      <td>85.8</td>
+      <td>87.3</td>
+      <td>58.3</td>
+      <td>40.5</td>
+      <td>49.2</td>
+      <td>7.8</td>
+    </tr>
+    <tr>
+      <td>InternVL3-14B</td>
+      <td>14B</td>
+      <td>72.3</td>
+      <td>51.3</td>
+      <td>54.1</td>
+      <td>51.4</td>
+      <td>75.5</td>
+      <td>65.8</td>
+      <td>85.8</td>
+      <td>87.5</td>
+      <td>73.3</td>
+      <td>52.2</td>
+      <td>71.1</td>
+      <td>40.2</td>
+    </tr>
+    <tr>
+      <td>InternVL3.5-14B</td>
+      <td>14B</td>
+      <td>73.2</td>
+      <td>52.8</td>
+      <td>55.4</td>
+      <td>52.0</td>
+      <td>75.0</td>
+      <td>65.9</td>
+      <td>86.1</td>
+      <td>87.8</td>
+      <td>73.0</td>
+      <td>50.2</td>
+      <td>71.9</td>
+      <td>39.3</td>
+    </tr>
+    <tr>
+      <td>Qwen3-VL-32B</td>
+      <td>32B</td>
+      <td>83.0</td>
+      <td>66.9</td>
+      <td>77.5</td>
+      <td>68.0</td>
+      <td>86.0</td>
+      <td>78.8</td>
+      <td>88.6</td>
+      <td>89.8</td>
+      <td>75.7</td>
+      <td>53.3</td>
+      <td>37.5</td>
+      <td>48.8</td>
+    </tr>
+    <tr>
+      <td>InternVL3.5-38B</td>
+      <td>38B</td>
+      <td>79.0</td>
+      <td>60.0</td>
+      <td>71.8</td>
+      <td>51.9</td>
+      <td>77.3</td>
+      <td>67.1</td>
+      <td>87.8</td>
+      <td>88.4</td>
+      <td>72.6</td>
+      <td>49.5</td>
+      <td>55.5</td>
+      <td>31.4</td>
+    </tr>
+    <tr>
+      <td>Qwen2.5-VL-72B</td>
+      <td>72B</td>
+      <td>88.5</td>
+      <td>72.7</td>
+      <td>79.1</td>
+      <td>47.7</td>
+      <td>76.0</td>
+      <td>64.7</td>
+      <td>86.9</td>
+      <td>88.7</td>
+      <td>62.0</td>
+      <td>41.7</td>
+      <td>75.8</td>
+      <td>28.0</td>
+    </tr>
+    <tr>
+      <td>OCRVerse (Ours)</td>
+      <td>4B</td>
+      <td>84.8</td>
+      <td>72.2</td>
+      <td>75.4</td>
+      <td>63.2</td>
+      <td>85.2</td>
+      <td>76.3</td>
+      <td>85.7</td>
+      <td>87.4</td>
+      <td>88.7</td>
+      <td>63.1</td>
+      <td>89.1</td>
+      <td>54.7</td>
+    </tr>
+  </tbody>
+</table>
 
 # 🔍 Usage Example
 
 ## Inference
 
-### OCRVerse-text
+### Text-Centric Task
 
-This below is a simple example of how to use OCRVerse-text for document parsing tasks.
+This below is a simple example of how to use OCRVerse for document parsing tasks.
 
 Please first install [transformers](https://github.com/huggingface/transformers) using the following command:
 
@@ -975,7 +1255,7 @@ from transformers import Qwen3VLForConditionalGeneration, AutoProcessor
 import torch
 
 # Load model
-model_path = 'DocTron/OCRVerse-text'
+model_path = 'DocTron/OCRVerse'
 model = Qwen3VLForConditionalGeneration.from_pretrained(
     model_path,
     dtype="auto", 
@@ -985,7 +1265,7 @@ model = Qwen3VLForConditionalGeneration.from_pretrained(
 processor = AutoProcessor.from_pretrained(model_path, trust_remote_code=True)
 
 # Prepare input with image and text
-image_path = "./assets/ocrverse-text_test.jpg"
+image_path = "./assets/text_centric_test.jpg"
 # We recommend using the following prompt to better performance, since it is used throughout the training process.
 prompt = "Extract the main content from the document in the image, keeping the original structure. Convert all formulas to LaTeX and all tables to HTML."
 
@@ -1025,15 +1305,15 @@ print(output_text[0])
 # $$
 ```
 
-### OCRVerse-code
+### Vision-Centric Task
 
-Below is a simple example of how to use OCRVerse-code for chart-to-code generation tasks. We also recommend utilizing [SGLang](https://github.com/sgl-project/sglang) for inference.
+Below is a simple example of how to use OCRVerse for vision-centric tasks. We also recommend utilizing [SGLang](https://github.com/sgl-project/sglang) for inference.
 ```python
 from transformers import Qwen3VLForConditionalGeneration, AutoProcessor
 import torch
 
 # Load model
-model_path = 'DocTron/OCRVerse-code'
+model_path = 'DocTron/OCRVerse'
 model = Qwen3VLForConditionalGeneration.from_pretrained(
     model_path,
     dtype="auto", 
@@ -1043,7 +1323,7 @@ model = Qwen3VLForConditionalGeneration.from_pretrained(
 processor = AutoProcessor.from_pretrained(model_path, trust_remote_code=True)
 
 # Prepare input with image and text
-image_path = "./assets/chart2code_example.png"
+image_path = "./assets/vision_centric_test.png"
 prompt = "You are an expert Python developer who specializes in writing matplotlib code based on a given picture. I found a very nice picture in a STEM paper, but there is no corresponding source code available. I need your help to generate the Python code that can reproduce the picture based on the picture I provide.\nNote that it is necessary to use figsize=(7.0, 5.0) to set the image size to match the original size.\nNow, please give me the matplotlib code that reproduces the picture below."
 
 messages = [
