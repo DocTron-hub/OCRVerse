@@ -1418,7 +1418,7 @@ torchrun --nproc_per_node="${GPUS_PER_NODE}" --nnodes="${NNODES}" --node_rank="$
 ```
 
 # 📌 Acknowledgement
-We sincerely appreciate [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory) for providing reference training framework.
+We sincerely appreciate [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory) and [EasyR1](https://github.com/hiyouga/EasyR1) for providing reference training framework.
 
 
 <!-- ## 📖 Citation
