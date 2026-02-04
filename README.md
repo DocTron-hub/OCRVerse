@@ -1421,16 +1421,13 @@ torchrun --nproc_per_node="${GPUS_PER_NODE}" --nnodes="${NNODES}" --node_rank="$
 We sincerely appreciate [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory) and [EasyR1](https://github.com/hiyouga/EasyR1) for providing reference training framework.
 
 
-<!-- ## 📖 Citation
+## 📖 Citation
 If you find this project useful, please feel free to leave a star and cite our paper:
 ```
-@misc{chen2025chartr1,
-      title={Chart-R1: Chain-of-Thought Supervision and Reinforcement for Advanced Chart Reasoner}, 
-      author={Lei Chen and Xuanle Zhao and Zhixiong Zeng and Jing Huang and Yufeng Zhong and Lin Ma},
-      year={2025},
-      eprint={2507.15509},
-      archivePrefix={arXiv},
-      primaryClass={cs.AI},
-      url={https://arxiv.org/abs/2507.15509}, 
+@article{zhong2026ocrverse,
+  title={OCRVerse: Towards Holistic OCR in End-to-End Vision-Language Models},
+  author={Zhong, Yufeng and Chen, Lei and Zhao, Xuanle and Han, Wenkang and Zheng, Liming and Huang, Jing and Jiang, Deyang and Cao, Yilin and Ma, Lin and Zeng, Zhixiong},
+  journal={arXiv preprint arXiv:2601.21639},
+  year={2026}
 }
-``` -->
+```
